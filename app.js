@@ -32,8 +32,6 @@ function clearInputs(){
 }
 
 function calculate_ProfitLoss(initialPrice, currPrice, quantity){
-    console.log(initialPrice, currPrice, quantity)
-    console.log(typeof initialPrice,typeof currPrice,typeof quantity)
     if(initialPrice > currPrice){ //LOSS CONDITION
         let loss = (initialPrice -  currPrice) * quantity;
         let lossPercentage = (loss/initialPrice)* 100;
