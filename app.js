@@ -3,23 +3,23 @@ const btn = document.querySelector("#check-btn");
 const container = document.querySelector(".container");
 const output = document.querySelector(".output");
 
-function redMsg(msg){
-    container.style.border = "0.2rem solid red";
-    output.style.color = "red";
-    output.style.display = "block";
-    output.innerHTML = msg;
-}
+// function redMsg(msg){
+//     container.style.border = "0.2rem solid red";
+//     output.style.color = "red";
+//     output.style.display = "block";
+//     output.innerHTML = msg;
+// }
 
-function greenMsg(msg){
-    container.style.border = "0.2rem solid green";
-    output.style.color = "green";
-    output.style.display = "block";
-    output.innerHTML = msg;
-}
+// function greenMsg(msg){
+//     container.style.border = "0.2rem solid green";
+//     output.style.color = "green";
+//     output.style.display = "block";
+//     output.innerHTML = msg;
+// }
 
-function whiteMsg(msg){
-    container.style.border = "0.2rem solid white";
-    output.style.color = "white";
+function displayMsg(color, msg){
+    container.style.border = `0.2rem solid ${color}`;
+    output.style.color = color;
     output.style.display = "block";
     output.innerHTML = msg;
 }
@@ -37,7 +37,7 @@ function calculate_ProfitLoss(initialPrice, currPrice, quantity){
         let lossPercentage = (loss/initialPrice)* 100;
 
         let message = `You have suffered a loss of ${loss.toFixed(2)}rs and the loss percentage is ${lossPercentage.toFixed(2)}%`;
-        redMsg(message);
+        displayMsg("red", message);
         clearInputs();
     } 
     else if(initialPrice < currPrice){
@@ -45,12 +45,12 @@ function calculate_ProfitLoss(initialPrice, currPrice, quantity){
         let profitPercentage = (profit/initialPrice)* 100;
 
         let message = `You have gained a profit of ${profit.toFixed(2)}rs and the profit percentage is ${profitPercentage.toFixed(2)}%`;
-        greenMsg(message);
+        displayMsg("green", message);
         clearInputs();
     }
     else{
         let message = "You have neither suffered loss nor gained any profits";
-        whiteMsg(message);
+        displayMsg("white", message);
         clearInputs();
     }
 }
@@ -61,16 +61,16 @@ function clickHandler(){
     let quantity = Number(inputs[1].value);
 
     if(initialPrice === "" || quantity === "" || currPrice === ""){
-        redMsg("Please enter all the fields.");
+        displayMsg("red", "Please enter all the fields.");
         clearInputs();
     }
     else if(initialPrice < 0 || quantity < 0 || currPrice < 0){
-        redMsg("Stock prices or quantity cannot be negative.");
+        displayMsg("red", "Stock prices or quantity cannot be negative.");
         clearInputs();
     }
     else{
         if(quantity == 0){
-            redMsg("Stock quantities cannot be zero.");
+            displayMsg("red", "Stock quantities cannot be zero.");
             clearInputs();
         }
         else{ //actual calculation
