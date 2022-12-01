@@ -24,23 +24,21 @@ function whiteMsg(msg){
     output.innerHTML = msg;
 }
 
+function clearInputs(){
+    //clear out the inputs
+    for(let input of inputs){
+        input.value = "";
+    }
+}
+
 function calculate_ProfitLoss(initialPrice, currPrice, quantity){
-    console.log(initialPrice);
-    console.log(quantity);
-    console.log(currPrice);
-    
     if(initialPrice > currPrice){ //LOSS CONDITION
         let loss = (currPrice - initialPrice) * quantity;
         let lossPercentage = (loss/(initialPrice * quantity)) * 100;
 
         let message = `You have suffered a loss of ${loss.toFixed(2)}rs and the loss percentage is ${lossPercentage.toFixed(2)}%`;
-
         redMsg(message);
-
-        //clear out the inputs
-        for(let input of inputs){
-            input.value = "";
-        }
+        clearInputs();
     } 
     else if(initialPrice < currPrice){
         let profit = (currPrice - initialPrice)*quantity;
@@ -49,20 +47,12 @@ function calculate_ProfitLoss(initialPrice, currPrice, quantity){
         let message = `You have gained a profit of ${profit.toFixed(2)}rs and the profit percentage is ${profitPercentage.toFixed(2)}%`;
 
         greenMsg(message);
-
-        //clear out the inputs
-        for(let input of inputs){
-            input.value = "";
-        }
+        clearInputs();
     }
     else{
         let message = "You have neither suffered loss nor gained any profits";
         whiteMsg(message);
-
-        //clear out the inputs
-        for(let input of inputs){
-            input.value = "";
-        }
+        clearInputs();
     }
 }
 
@@ -73,28 +63,16 @@ function clickHandler(){
 
     if(initialPrice === "" || quantity === "" || currPrice === ""){
         redMsg("Please enter all the fields.");
-
-        //clearout the inputs
-        for(let input of inputs){
-            input.value = "";
-        }
+        clearInputs();
     }
     else if(initialPrice < 0 || quantity < 0 || currPrice < 0){
         redMsg("Stock prices or quantity cannot be negative.");
-
-        //clear out the inputs
-        for(let input of inputs){
-            input.value = "";
-        }
+        clearInputs();
     }
     else{
         if(quantity == 0){
             redMsg("Stock quantities cannot be zero.");
-
-            //clear out the inputs
-            for(let input of inputs){
-                input.value = "";
-            }
+            clearInputs();
         }
         else{ //actual calculation
             calculate_ProfitLoss(initialPrice, currPrice, quantity);
