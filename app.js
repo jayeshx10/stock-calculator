@@ -33,8 +33,8 @@ function clearInputs(){
 
 function calculate_ProfitLoss(initialPrice, currPrice, quantity){
     if(initialPrice > currPrice){ //LOSS CONDITION
-        let loss = (currPrice - initialPrice) * quantity;
-        let lossPercentage = (loss/(initialPrice * quantity)) * 100;
+        let loss = (initialPrice -  currPrice) * quantity;
+        let lossPercentage = (loss/initialPrice)* 100;
 
         let message = `You have suffered a loss of ${loss.toFixed(2)}rs and the loss percentage is ${lossPercentage.toFixed(2)}%`;
         redMsg(message);
@@ -42,10 +42,9 @@ function calculate_ProfitLoss(initialPrice, currPrice, quantity){
     } 
     else if(initialPrice < currPrice){
         let profit = (currPrice - initialPrice)*quantity;
-        let profitPercentage = (profit/(initialPrice * quantity)) * 100;
+        let profitPercentage = (profit/initialPrice)* 100;
 
         let message = `You have gained a profit of ${profit.toFixed(2)}rs and the profit percentage is ${profitPercentage.toFixed(2)}%`;
-
         greenMsg(message);
         clearInputs();
     }
