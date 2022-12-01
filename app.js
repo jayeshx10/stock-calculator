@@ -32,6 +32,8 @@ function clearInputs(){
 }
 
 function calculate_ProfitLoss(initialPrice, currPrice, quantity){
+    console.log(initialPrice, currPrice, quantity)
+    console.log(typeof initialPrice,typeof currPrice,typeof quantity)
     if(initialPrice > currPrice){ //LOSS CONDITION
         let loss = (initialPrice -  currPrice) * quantity;
         let lossPercentage = (loss/initialPrice)* 100;
@@ -56,9 +58,9 @@ function calculate_ProfitLoss(initialPrice, currPrice, quantity){
 }
 
 function clickHandler(){
-    let initialPrice = inputs[0].value;
-    let currPrice = inputs[2].value;
-    let quantity = inputs[1].value;
+    let initialPrice = Number(inputs[0].value);
+    let currPrice = Number(inputs[2].value);
+    let quantity = Number(inputs[1].value);
 
     if(initialPrice === "" || quantity === "" || currPrice === ""){
         redMsg("Please enter all the fields.");
