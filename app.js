@@ -3,20 +3,6 @@ const btn = document.querySelector("#check-btn");
 const container = document.querySelector(".container");
 const output = document.querySelector(".output");
 
-// function redMsg(msg){
-//     container.style.border = "0.2rem solid red";
-//     output.style.color = "red";
-//     output.style.display = "block";
-//     output.innerHTML = msg;
-// }
-
-// function greenMsg(msg){
-//     container.style.border = "0.2rem solid green";
-//     output.style.color = "green";
-//     output.style.display = "block";
-//     output.innerHTML = msg;
-// }
-
 function displayMsg(color, msg){
     container.style.border = `0.2rem solid ${color}`;
     output.style.color = color;
