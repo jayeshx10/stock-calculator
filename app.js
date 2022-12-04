@@ -46,7 +46,7 @@ function clickHandler(){
     let currPrice = Number(inputs[2].value);
     let quantity = Number(inputs[1].value);
 
-    if(initialPrice === "" || quantity === "" || currPrice === ""){
+    if(inputs[0].value === "" || inputs[1].value === "" || inputs[2].value === ""){
         displayMsg("red", "Please enter all the fields.");
         clearInputs();
     }
